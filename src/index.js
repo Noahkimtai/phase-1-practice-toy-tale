@@ -26,6 +26,13 @@ function addToys(data){
     img.className='card'
     img.src=el.image
     toyCollection.appendChild(img)
+    let likes = document.createElement('span')
+    likes.innerText= el.likes
+    toyCollection.appendChild(likes)
+    let likeButton = document.createElement('button')
+    likeButton.innerText ='like'
+    likeButton.className ='like'
+    toyCollection.appendChild(likeButton).addEventListener('click', e=>likeListner(e))
   })
 }
 
@@ -50,5 +57,19 @@ function addFormEvent(e){
       'Content-Type':'application/json'
     },
     body:JSON.stringify(toy)
+  })
+}
+
+function likeListner(){
+  e.preventDefault()
+  fetch('http://localhost:2003/toys',{
+    method:'PATCH',
+    headers:{
+      'Connection-Type':'application/json'
+    },
+    body:JSON.stringify(
+
+    )
+
   })
 }
